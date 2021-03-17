@@ -63,4 +63,10 @@ label: 0"
 
 ![attention_clipper3](https://user-images.githubusercontent.com/40942409/111523770-021df680-879f-11eb-91f4-72ab7dc0fe33.png)
 
+サンプル2(複数のBoundingBox)の起動
+```
+roslaunch jsk_pcl_ros_samples attention_clipper_multi.launch 
+```
+
+![Screenshot from 2021-03-18 04-53-53](https://user-images.githubusercontent.com/40942409/111529920-0e598200-87a6-11eb-9cb8-f6e991a1a1e1.png)
 
