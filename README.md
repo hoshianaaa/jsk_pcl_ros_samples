@@ -17,7 +17,7 @@ source ~/catkin_ws/devel/setup.bash
 ```
 # Try/試す
 ## attention_clipper(領域の切り抜き)
-```
+```bash:サンプルの起動
 roslaunch jsk_pcl_ros_samples attention_clipper.launch
 ```
 
