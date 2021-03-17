@@ -1,0 +1,40 @@
+<launch>
+
+	<arg name="file_name" value="$(find jsk_pcl_ros_samples)/pcd/bunny.pcd"/>
+
+	<!-- rate : if publish at 10 Hz, set 0.1 -->
+
+	<arg name="rate" value="0.1"/>
+	<node pkg="pcl_ros" type="pcd_to_pointcloud" name="pcd_to_pointcloud" args="$(arg file_name) $(arg rate)" output="screen">
+		<remap from="cloud_pcd" to="/points"/>
+		<param name="frame_id" value="base_link" />
+	</node>
+
+
+  <arg name="gui" default="false" />
+
+  <arg name="input_cloud" value="/points" />
+
+  <node name="attention_clipper"
+        pkg="nodelet" type="nodelet"
+        args="standalone jsk_pcl/AttentionClipper">
+    <remap from="~input/points" to="$(arg input_cloud)" />
+    <rosparam>
+      use_multiple_attention: true
+      initial_pos_list: [[0, 0, 0],[0, 0.2, 0]]
+      initial_rot_list: [[0, 0, 0],[0, 0, 0]]
+      dimensions: [[0.1,0.1,0.1],[0.1,0.1,0.1]]
+      frame_id_list: [base_link,base_link]
+    </rosparam>
+  </node>
+
+  <node name="extract_indices"
+        pkg="jsk_pcl_ros" type="extract_indices">
+    <remap from="~input" to="$(arg input_cloud)" />
+    <remap from="~indices" to="attention_clipper/output/point_indices" />
+  </node>
+
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find jsk_pcl_ros_samples)/rviz/attention_clipper_multi.rviz" required="true" />
+
+</launch>
+
