@@ -17,13 +17,16 @@ source ~/catkin_ws/devel/setup.bash
 ```
 # Try/試す
 ## attention_clipper(領域の切り抜き)
-```bash:サンプルの起動
+
+サンプルの起動
+```
 roslaunch jsk_pcl_ros_samples attention_clipper.launch
 ```
 
 ![attention_clipper1](https://user-images.githubusercontent.com/40942409/111522713-e49c5d00-879d-11eb-88de-588b5b1f4d68.png)
 
-```BoundingBoxの移動
+BoundingBoxの移動
+```
 rostopic pub /attention_clipper/input/pose geometry_msgs/PoseStamped "header:
   seq: 0
   stamp:
@@ -44,7 +47,7 @@ pose:
 
 ![attention_clipper2](https://user-images.githubusercontent.com/40942409/111523346-858b1800-879e-11eb-8375-3107b5459416.png)
 
-
+BoundingBoxの拡大
 ```
 rostopic pub /attention_clipper/input/box jsk_recognition_msgs/BoundingBox "header:
   seq: 0
