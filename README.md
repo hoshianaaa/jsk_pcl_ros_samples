@@ -1,7 +1,7 @@
 # jsk_pcl_ros_samples
 jsk_pcl_rosパッケージのサンプル集  
   
-# Install/インストール
+# インストール
 ```
 sudo apt-get install -y ros-melodic-jsk-pcl-ros
 sudo apt-get install -y ros-melodic-jsk-visualization
@@ -15,7 +15,7 @@ catkin make
 source ~/catkin_ws/devel/setup.bash
 
 ```
-# Try/試す
+# 試す
 ## attention_clipper(領域の切り抜き)
 
 サンプルの起動
