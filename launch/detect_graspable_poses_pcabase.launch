@@ -1,0 +1,31 @@
+<launch>
+
+	<arg name="file_name" value="$(find jsk_pcl_ros_samples)/pcd/bunny.pcd"/>
+
+	<!-- rate : if publish at 10 Hz, set 0.1 -->
+
+	<arg name="rate" value="0.1"/>
+	<node pkg="pcl_ros" type="pcd_to_pointcloud" name="pcd_to_pointcloud" args="$(arg file_name) $(arg rate)" output="screen">
+		<remap from="cloud_pcd" to="/points"/>
+		<param name="frame_id" value="base_link" />
+	</node>
+
+  <arg name="gui" default="false" />
+
+  <arg name="INPUT_CLOUD" value="/points" />
+
+  <node name="detect_graspable_poses_pcabase"
+        pkg="jsk_pcl_ros" type="detect_graspable_poses_pcabase.py">
+    <remap from="~input" to="$(arg INPUT_CLOUD)" />
+    <rosparam subst_value="true">
+      direction: z
+      hand_size: 0.20
+      interval_m: 0.04
+    </rosparam>
+
+  </node>
+
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find jsk_pcl_ros_samples)/rviz/detect_graspable_poses_pcabase.rviz" required="true" />
+
+</launch>
+
