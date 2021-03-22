@@ -10,8 +10,6 @@
 		<param name="frame_id" value="base_link" />
 	</node>
 
-  <arg name="gui" default="false" />
-
   <arg name="INPUT_CLOUD" value="/points" />
 
   <node name="detect_graspable_poses_pcabase"
