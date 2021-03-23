@@ -1,0 +1,36 @@
+<launch>
+  
+<arg name="file_name" value="$(find jsk_pcl_ros_samples)/pcd/bunny.pcd"/>
+
+<!-- rate : if publish at 10 Hz, set 0.1 -->
+
+  <arg name="rate" value="0.1"/>
+  <node pkg="pcl_ros" type="pcd_to_pointcloud" name="pcd_to_pointcloud" args="$(arg file_name) $(arg rate)" output="screen">
+    <remap from="cloud_pcd" to="/points"/>
+    <param name="frame_id" value="base_link" />
+  </node>
+
+
+  <arg name="INPUT" default="/points"/>
+  <arg name="DEFAULT_NAMESPACE" default="octree_voxel_grid"/>
+
+  <arg name="create_manager" default="true" />
+  <arg name="manager" default="octree_voxel_grid_manger" />
+
+  <group ns="$(arg DEFAULT_NAMESPACE)">
+    <node if="$(arg create_manager)"
+          pkg="nodelet" type="nodelet" name="$(arg manager)"
+          args="manager" output="screen"/>
+
+    <node pkg="nodelet" type="nodelet"
+          name="octgrid"
+          args="standalone jsk_pcl/OctreeVoxelGrid"
+          output="screen" clear_params="true">
+      <remap from="~input" to="$(arg INPUT)" />
+      <param name="publish_marker" value="true" />
+    </node>
+  </group>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find jsk_pcl_ros_samples)/rviz/octree_voxel_grid.rviz" required="true" />
+  
+</launch>
