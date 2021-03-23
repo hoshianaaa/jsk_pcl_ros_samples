@@ -78,3 +78,29 @@ roslaunch jsk_pcl_ros_samples detect_graspable_poses_pcabase.launch
 ```
 
 ![Screenshot from 2021-03-21 14-44-07](https://user-images.githubusercontent.com/40942409/111895762-0b85b800-8a58-11eb-9fb8-8461c23ee58d.png)
+
+## Octree_voxel_grid(点群のボクセル化)
+```
+roslaunch jsk_pcl_ros_samples octree_voxel_grid.launch
+```
+
+![Screenshot from 2021-03-24 03-52-27](https://user-images.githubusercontent.com/40942409/112204430-004cab00-8c57-11eb-86a3-54590fccd181.png)
+
+rqt_reconfigureからresolution(ボクセル間の間隔)の変更ができます。
+
+```
+rosrun rqt_reconfigure rqt_reconfigure
+```
+![Screenshot from 2021-03-24 03-53-28](https://user-images.githubusercontent.com/40942409/112204557-25411e00-8c57-11eb-8c77-d296a6980a57.png)
+
+0.05に変更
+
+![Screenshot from 2021-03-24 03-53-18](https://user-images.githubusercontent.com/40942409/112204618-3427d080-8c57-11eb-9af9-5466692ac1b3.png)
+
+0.01に変更
+
+![Screenshot from 2021-03-24 03-53-57](https://user-images.githubusercontent.com/40942409/112204676-46097380-8c57-11eb-8004-6f4415b06210.png)
+
+
+
+
