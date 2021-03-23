@@ -91,21 +91,3 @@ rosrun rqt_reconfigure rqt_reconfigure
 ```
 
 ![Screenshot from 2021-03-24 03-53-28](https://user-images.githubusercontent.com/40942409/112204852-7fda7a00-8c57-11eb-8426-20dab3a9b685.png)
-
-resolution:0.01
-
-![Screenshot from 2021-03-24 03-52-27](https://user-images.githubusercontent.com/40942409/112204430-004cab00-8c57-11eb-86a3-54590fccd181.png)
-
-
-resolution:0.05
-
-![Screenshot from 2021-03-24 03-53-18](https://user-images.githubusercontent.com/40942409/112204970-a26c9300-8c57-11eb-9673-2471752f0119.png)
-
-
-resolution:0.01
-
-![Screenshot from 2021-03-24 03-53-57](https://user-images.githubusercontent.com/40942409/112204676-46097380-8c57-11eb-8004-6f4415b06210.png)
-
-
-
-
