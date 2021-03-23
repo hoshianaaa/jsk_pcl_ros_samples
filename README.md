@@ -91,11 +91,12 @@ rqt_reconfigureからresolution(ボクセル間の間隔)の変更ができま�
 ```
 rosrun rqt_reconfigure rqt_reconfigure
 ```
-![Screenshot from 2021-03-24 03-53-28](https://user-images.githubusercontent.com/40942409/112204557-25411e00-8c57-11eb-8c77-d296a6980a57.png)
+
+![Screenshot from 2021-03-24 03-53-28](https://user-images.githubusercontent.com/40942409/112204852-7fda7a00-8c57-11eb-8426-20dab3a9b685.png)
 
 0.05に変更
 
-![Screenshot from 2021-03-24 03-53-18](https://user-images.githubusercontent.com/40942409/112204618-3427d080-8c57-11eb-9af9-5466692ac1b3.png)
+![Screenshot from 2021-03-24 03-53-28](https://user-images.githubusercontent.com/40942409/112204557-25411e00-8c57-11eb-8c77-d296a6980a57.png)
 
 0.01に変更
 
