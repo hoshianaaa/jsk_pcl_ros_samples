@@ -1,7 +1,7 @@
 <launch>
   <arg name="gui" default="true"/>
 
-	<arg name="file_name" value="$(find jsk_pcl_ros_samples)/pcd/karage.pcd"/>
+	<arg name="file_name" value="$(find jsk_pcl_ros_samples)/pcd/region_growing_rgb_tutorial.pcd"/>
 
 	<arg name="rate" value="0.1"/>
 	<node pkg="pcl_ros" type="pcd_to_pointcloud" name="pcd_to_pointcloud" args="$(arg file_name) $(arg rate)" output="screen">
@@ -12,12 +12,12 @@
   <include file="$(find jsk_pcl_ros)/launch/hsi_color_filter.launch">
     <arg name="DEFAULT_NAMESPACE" value="hsi_color_filter"/>
     <arg name="INPUT" value="points"/>
-    <arg name="h_max" default="-7" />
-    <arg name="h_min" default="-128" />
-    <arg name="s_max" default="255" />
-    <arg name="s_min" default="0" />
-    <arg name="i_max" default="255" />
-    <arg name="i_min" default="0" />
+    <arg name="h_max" default="43" />
+    <arg name="h_min" default="127" />
+    <arg name="s_max" default="194" />
+    <arg name="s_min" default="12" />
+    <arg name="i_max" default="200" />
+    <arg name="i_min" default="80" />
 
   </include>
 
