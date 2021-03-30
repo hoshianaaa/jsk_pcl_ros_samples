@@ -12,11 +12,18 @@
   <include file="$(find jsk_pcl_ros)/launch/hsi_color_filter.launch">
     <arg name="DEFAULT_NAMESPACE" value="hsi_color_filter"/>
     <arg name="INPUT" value="points"/>
+    <arg name="h_max" default="-7" />
+    <arg name="h_min" default="-128" />
+    <arg name="s_max" default="255" />
+    <arg name="s_min" default="0" />
+    <arg name="i_max" default="255" />
+    <arg name="i_min" default="0" />
+
   </include>
 
   <group if="$(arg gui)">
     <node name="rviz"
           pkg="rviz" type="rviz"
-          args="-d $(find jsk_pcl_ros)/sample/rviz/octree_change_publisher.rviz"/>
+          args="-d $(find jsk_pcl_ros_samples)/rviz/hsi_color_filter.rviz"/>
   </group>
 </launch>
