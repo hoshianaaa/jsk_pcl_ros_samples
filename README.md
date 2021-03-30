@@ -5,7 +5,7 @@ jsk_pcl_rosパッケージのサンプル集
 ```
 sudo apt-get install -y ros-melodic-jsk-pcl-ros
 sudo apt-get install -y ros-melodic-jsk-visualization
-git clon3 https://github.com/hoshianaaa/jsk_pcl_ros_samples.git
+git clone https://github.com/hoshianaaa/jsk_pcl_ros_samples.git
 cd ~/catkin_ws
 
 catkin build 
