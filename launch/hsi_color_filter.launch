@@ -1,0 +1,22 @@
+<launch>
+  <arg name="gui" default="true"/>
+
+	<arg name="file_name" value="$(find jsk_pcl_ros_samples)/pcd/karage.pcd"/>
+
+	<arg name="rate" value="0.1"/>
+	<node pkg="pcl_ros" type="pcd_to_pointcloud" name="pcd_to_pointcloud" args="$(arg file_name) $(arg rate)" output="screen">
+		<remap from="cloud_pcd" to="hsi_color_filter/points"/>
+		<param name="frame_id" value="base_link" />
+	</node>
+
+  <include file="$(find jsk_pcl_ros)/launch/hsi_color_filter.launch">
+    <arg name="DEFAULT_NAMESPACE" value="hsi_color_filter"/>
+    <arg name="INPUT" value="points"/>
+  </include>
+
+  <group if="$(arg gui)">
+    <node name="rviz"
+          pkg="rviz" type="rviz"
+          args="-d $(find jsk_pcl_ros)/sample/rviz/octree_change_publisher.rviz"/>
+  </group>
+</launch>
