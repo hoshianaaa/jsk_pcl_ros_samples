@@ -105,3 +105,17 @@ rosrun rqt_reconfigure rqt_reconfigure
 
 ![Screenshot from 2021-03-30 22-29-35](https://user-images.githubusercontent.com/40942409/112997014-af353d80-91a7-11eb-8b02-83f0ea5db343.png)
 
+
+## supervoxel segmentation
+
+```
+roslaunch jsk_pcl_ros_samples supervoxel_segmentation.launch
+```
+
+![Screenshot from 2021-04-18 17-47-29](https://user-images.githubusercontent.com/40942409/115139733-7b468d00-a06e-11eb-87b2-07b864ef6806.png)
+
+- change parameter
+
+```
+rosrun rqt_reconfigure rqt_reconfigure
+```
