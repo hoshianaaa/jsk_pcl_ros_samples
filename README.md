@@ -120,7 +120,7 @@ roslaunch jsk_pcl_ros_samples supervoxel_segmentation.launch
 rosrun rqt_reconfigure rqt_reconfigure
 ```
 
-## normal_estimation_omp
+## normal_estimation_omp(法線推定)
 
 ```
 roslaunch jsk_pcl_ros_samples normal_estimation_omp.launch
