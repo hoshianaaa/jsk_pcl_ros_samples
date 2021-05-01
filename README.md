@@ -119,3 +119,12 @@ roslaunch jsk_pcl_ros_samples supervoxel_segmentation.launch
 ```
 rosrun rqt_reconfigure rqt_reconfigure
 ```
+
+## normal_estimation_omp
+
+```
+roslaunch jsk_pcl_ros_samples normal_estimation_omp.launch
+```
+
+![Screenshot from 2021-05-02 02-33-21](https://user-images.githubusercontent.com/40942409/116790404-e53f4780-aaee-11eb-8a1a-c68d742e6b2a.png)
+
