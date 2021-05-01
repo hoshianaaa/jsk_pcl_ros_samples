@@ -1,0 +1,29 @@
+<launch>
+  <arg name="gui" default="true"/>
+
+  <arg name="file_name" value="$(find jsk_pcl_ros_samples)/pcd/bunny.pcd"/>
+
+	<!-- rate : if publish at 10 Hz, set 0.1 -->
+
+	<arg name="rate" value="0.1"/>
+	<node pkg="pcl_ros" type="pcd_to_pointcloud" name="pcd_to_pointcloud" args="$(arg file_name) $(arg rate)" output="screen">
+		<remap from="cloud_pcd" to="/points"/>
+		<param name="frame_id" value="base_link" />
+	</node>
+
+  <node name="normal_estimation_omp"
+        pkg="nodelet" type="nodelet"
+        args="standalone jsk_pcl/NormalEstimationOMP">
+    <remap from="~input" to="/points"/>
+    <rosparam>
+      k_search: 15
+      radius_search: 0.0
+    </rosparam>
+  </node>
+
+  <group if="$(arg gui)">
+    <node name="rviz"
+          pkg="rviz" type="rviz"
+          args="-d $(find jsk_pcl_ros_samples)/rviz/normal_estimation_omp.rviz"/>
+  </group>
+</launch>
