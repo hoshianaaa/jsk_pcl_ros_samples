@@ -134,5 +134,6 @@ roslaunch jsk_pcl_ros_samples normal_estimation_omp.launch
 roslaunch jsk_pcl_ros_samples multi_plane_sac_segmentation.launch
 ```
 
-![Screenshot from 2021-05-05 13-54-45](https://user-images.githubusercontent.com/40942409/117098599-e8b22780-ada9-11eb-8521-b27ab3bf89c2.png)
+![Screenshot from 2021-05-05 13-54-35](https://user-images.githubusercontent.com/40942409/117098641-097a7d00-adaa-11eb-9fc0-8d06de02d2ae.png)
+
 
