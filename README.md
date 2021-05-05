@@ -128,4 +128,12 @@ roslaunch jsk_pcl_ros_samples normal_estimation_omp.launch
 
 ![Screenshot from 2021-05-02 02-37-04](https://user-images.githubusercontent.com/40942409/116790481-541ca080-aaef-11eb-91dc-f6a5c3e9eb92.png)
 
+## multi_plane_sac_segmentation(平面検出)
+
+```
+roslaunch jsk_pcl_ros_samples multi_plane_sac_segmentation.launch
+```
+
+![Screenshot from 2021-05-05 13-54-35](https://user-images.githubusercontent.com/40942409/117098641-097a7d00-adaa-11eb-9fc0-8d06de02d2ae.png)
+
 
