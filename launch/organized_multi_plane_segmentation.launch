@@ -1,0 +1,40 @@
+<launch>
+
+	<arg name="file_name" value="$(find jsk_pcl_ros_samples)/pcd/table_scene_lms400.pcd"/>
+
+	<!-- rate : if publish at 10 Hz, set 0.1 -->
+
+	<arg name="rate" value="0.1"/>
+	<node pkg="pcl_ros" type="pcd_to_pointcloud" name="pcd_to_pointcloud" args="$(arg file_name) $(arg rate)" output="screen">
+		<remap from="cloud_pcd" to="/points"/>
+		<param name="frame_id" value="base_link" />
+	</node>
+
+  <arg name="gui" default="true"/>
+
+  <node name="sample_manager"
+        pkg="nodelet" type="nodelet"
+        args="manager"/>
+
+  <node name="organized_multi_plane_segmentation"
+        pkg="nodelet" type="nodelet"
+        args="load jsk_pcl/OrganizedMultiPlaneSegmentation sample_manager">
+    <remap from="~input" to="/points"/>
+    <rosparam>
+      publish_normal: true
+    </rosparam>
+  </node>
+
+  <group if="$(arg gui)">
+    <node name="normal_concatenater"
+          pkg="nodelet" type="nodelet"
+          args="load jsk_pcl_utils/NormalConcatenater sample_manager">
+      <remap from="~input" to="/points"/>
+      <remap from="~normal" to="organized_multi_plane_segmentation/output_normal"/>
+    </node>
+
+    <node name="rviz"
+          pkg="rviz" type="rviz"
+          args="-d $(find jsk_pcl_ros)/sample/rviz/organized_multi_plane_segmentation.rviz"/>
+  </group>
+</launch>

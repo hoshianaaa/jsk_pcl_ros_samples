@@ -1,0 +1,49 @@
+<launch>
+
+	<arg name="file_name" value="$(find jsk_pcl_ros_samples)/pcd/table_scene_lms400.pcd"/>
+
+	<!-- rate : if publish at 10 Hz, set 0.1 -->
+
+	<arg name="rate" value="0.1"/>
+	<node pkg="pcl_ros" type="pcd_to_pointcloud" name="pcd_to_pointcloud" args="$(arg file_name) $(arg rate)" output="screen">
+		<remap from="cloud_pcd" to="/points"/>
+		<param name="frame_id" value="base_link" />
+	</node>
+
+  <arg name="gui" default="true" />
+
+  <node name="sample_manager"
+        pkg="nodelet" type="nodelet"
+        args="manager"/>
+
+  <node name="multi_plane_sac_segmentation"
+        pkg="nodelet" type="nodelet"
+        args="load jsk_pcl/MultiPlaneSACSegmentation /sample_manager">
+    <remap from="~input" to="/points"/>
+    <rosparam>
+      use_normal: false
+      use_clusters: false
+      use_imu_parallel: false
+      use_imu_perpendicular: false
+    </rosparam>
+  </node>
+
+  <node name="dynparam_loader"
+        pkg="dynamic_reconfigure" type="dynparam"
+        args="load /multi_plane_sac_segmentation $(find jsk_pcl_ros)/sample/config/sample_multi_plane_sac_segmentation.yaml"/>
+
+  <node name="cluster_indices_decomposer"
+        pkg="nodelet" type="nodelet"
+        args="load jsk_pcl/ClusterPointIndicesDecomposer /sample_manager">
+    <remap from="~input" to="/points"/>
+    <remap from="~target" to="multi_plane_sac_segmentation/output_indices"/>
+  </node>
+
+  <group if="$(arg gui)">
+    <node name="rviz"
+          pkg="rviz" type="rviz"
+          args="-d $(find jsk_pcl_ros_samples)/rviz/multi_plane_sac_segmentation.rviz">
+    </node>
+  </group>
+
+</launch>
