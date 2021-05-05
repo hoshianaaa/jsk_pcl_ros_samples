@@ -136,4 +136,11 @@ roslaunch jsk_pcl_ros_samples multi_plane_sac_segmentation.launch
 
 ![Screenshot from 2021-05-05 13-54-35](https://user-images.githubusercontent.com/40942409/117098641-097a7d00-adaa-11eb-9fc0-8d06de02d2ae.png)
 
+## region_growing_segmentation
+
+```
+roslaunch jsk_pcl_ros_samples region_growing_segmentation.launch
+```
+
+![Screenshot from 2021-05-05 17-32-45](https://user-images.githubusercontent.com/40942409/117115553-38075080-adc8-11eb-9ed8-4002a921bf8f.png)
 
