@@ -10,6 +10,17 @@
 		<param name="frame_id" value="base_link" />
 	</node>
 
+  <node name="statistical_outlier_removal"
+        pkg="nodelet" type="nodelet"
+        args="standalone pcl/StatisticalOutlierRemoval">
+    <remap from="~input" to="/points" />
+    <rosparam>
+      mean_k: 10
+      stddev: 1.0
+    </rosparam>
+  </node>
+
+
   <arg name="gui" default="true" />
 
   <node name="sample_manager"
@@ -19,7 +30,7 @@
   <node name="multi_plane_sac_segmentation"
         pkg="nodelet" type="nodelet"
         args="load jsk_pcl/MultiPlaneSACSegmentation /sample_manager">
-    <remap from="~input" to="/points"/>
+    <remap from="~input" to="/statistical_outlier_removal/output"/>
     <rosparam>
       use_normal: false
       use_clusters: false
@@ -35,7 +46,7 @@
   <node name="cluster_indices_decomposer"
         pkg="nodelet" type="nodelet"
         args="load jsk_pcl/ClusterPointIndicesDecomposer /sample_manager">
-    <remap from="~input" to="/points"/>
+    <remap from="~input" to="pcl/StatisticalOutlierRemoval"/>
     <remap from="~target" to="multi_plane_sac_segmentation/output_indices"/>
   </node>
 

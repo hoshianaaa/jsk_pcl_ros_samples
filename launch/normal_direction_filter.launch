@@ -1,0 +1,36 @@
+<launch>
+  <arg name="gui" default="true"/>
+
+  <include file="$(find jsk_pcl_ros_samples)/launch/normal_estimation_omp.launch">
+    <arg name="file_name" value="$(find jsk_pcl_ros_samples)/pcd/bunny.pcd"/>
+    <arg name="gui" default="false"/>
+  </include>
+
+  <node name="normal_direction_filter"
+        pkg="nodelet" type="nodelet"
+        args="standalone jsk_pcl/NormalDirectionFilter">
+    <remap from="~input" to="normal_estimation_omp/output"/>
+    <rosparam>
+      use_imu: false
+      eps_angle: 0.2
+      direction: [0, 0, 1]
+    </rosparam>
+  </node>
+
+  <group if="$(arg gui)">
+    <node name="extract_indices_normal_filtered"
+          pkg="nodelet" type="nodelet"
+          args="standalone jsk_pcl/ExtractIndices">
+      <remap from="~input" to="normal_estimation_omp/output_with_xyz"/>
+      <remap from="~indices" to="normal_direction_filter/output"/>
+      <rosparam>
+        keep_organized: true
+      </rosparam>
+    </node>
+
+    <node name="rviz"
+          pkg="rviz" type="rviz"
+          args="-d $(find jsk_pcl_ros_samples)/rviz/normal_direction_filter.rviz"/>
+  </group>
+</launch>
+

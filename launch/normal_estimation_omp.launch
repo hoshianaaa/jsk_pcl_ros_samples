@@ -1,7 +1,7 @@
 <launch>
   <arg name="gui" default="true"/>
 
-  <arg name="file_name" value="$(find jsk_pcl_ros_samples)/pcd/bunny.pcd"/>
+  <arg name="file_name" default="$(find jsk_pcl_ros_samples)/pcd/bunny.pcd"/>
 
 	<!-- rate : if publish at 10 Hz, set 0.1 -->
 
