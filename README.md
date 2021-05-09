@@ -158,3 +158,5 @@ roslaunch jsk_pcl_ros_samples region_growing_multiple_plane_segmentation.launch
 ```
 roslaunch jsk_pcl_ros_samples normal_direction_filter.launch
 ```
+
+![Screenshot from 2021-05-10 02-53-59](https://user-images.githubusercontent.com/40942409/117582346-8c9a2b00-b13c-11eb-8189-2796d228484c.png)
