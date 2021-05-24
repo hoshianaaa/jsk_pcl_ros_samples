@@ -46,7 +46,7 @@
   <node name="cluster_indices_decomposer"
         pkg="nodelet" type="nodelet"
         args="load jsk_pcl/ClusterPointIndicesDecomposer /sample_manager">
-    <remap from="~input" to="pcl/StatisticalOutlierRemoval"/>
+    <remap from="~input" to="/statistical_outlier_removal/output"/>
     <remap from="~target" to="multi_plane_sac_segmentation/output_indices"/>
   </node>
 

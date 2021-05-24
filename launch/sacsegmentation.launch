@@ -1,0 +1,96 @@
+<launch>
+
+    	<arg name="file_name" value="$(find jsk_pcl_ros_samples)/pcd/table_scene_lms400.pcd"/>
+
+      <!-- rate : if publish at 10 Hz, set 0.1 -->
+
+      <arg name="rate" value="0.1"/>
+      <node pkg="pcl_ros" type="pcd_to_pointcloud" name="pcd_to_pointcloud" args="$(arg file_name) $(arg rate)" output="screen">
+        <remap from="cloud_pcd" to="/points"/>
+        <param name="frame_id" value="base_link" />
+      </node>
+       
+     <node pkg="nodelet" type="nodelet" name="pcl_manager" args="manager" output="screen" />
+     <node name="voxel_grid" pkg="nodelet" type="nodelet" args="load pcl/VoxelGrid pcl_manager">
+          <remap from="~input" to="/points" />
+          <rosparam subst_value="true">
+               filter_field_name: ''
+               leaf_size: 0.1
+          </rosparam>
+     </node>
+
+     <node name="statistical_outlier_removal" pkg="nodelet" type="nodelet" args="load pcl/StatisticalOutlierRemoval pcl_manager">
+          <remap from="~input" to="voxel_grid/output" />
+          <rosparam>
+               mean_k: 70
+               stddev: 0.1
+          </rosparam>
+     </node>
+
+     <node name="normal_estimation" pkg="nodelet" type="nodelet" args="load pcl/NormalEstimation pcl_manager">
+          <remap from="~input" to="statistical_outlier_removal/output" />
+          <rosparam>
+               radius_search: 0.015
+               k_search: 0
+               # 0, => ANN, 1 => FLANN, 2 => Organized
+               spatial_locator: 0
+          </rosparam>
+     </node>
+
+     <node pkg="nodelet" type="nodelet" name="planar_segmentation" args="load pcl/SACSegmentationFromNormals pcl_manager" output="screen">
+          <remap from="~input"   to="statistical_outlier_removal/output" />
+          <remap from="~normals" to="normal_estimation/output" />
+          <rosparam>
+               # -[ Mandatory parameters
+               # model_type:
+               # 0: SACMODEL_PLANE
+               # 1: SACMODEL_LINE
+               # 2: SACMODEL_CIRCLE2D
+               # 3: SACMODEL_CIRCLE3D
+               # 4: SACMODEL_SPHERE
+               # 5: SACMODEL_CYLINDER
+               # 6: SACMODEL_CONE
+               # 7: SACMODEL_TORUS
+               # 8: SACMODEL_PARALLEL_LINE
+               # 9: SACMODEL_PERPENDICULAR_PLANE
+               # 10: SACMODEL_PARALLEL_LINES
+               # 11: SACMODEL_NORMAL_PLANE
+               # 12: SACMODEL_NORMAL_SPHERE
+               # 13: SACMODEL_REGISTRATION
+               # 14: SACMODEL_REGISTRATION_2D
+               # 15: SACMODEL_PARALLEL_PLANE
+               # 16: SACMODEL_NORMAL_PARALLEL_PLANE
+               # 17: SACMODEL_STICK
+               model_type: 0
+               distance_threshold: 0.1
+               max_iterations: 1000
+               method_type: 0
+               optimize_coefficients: true
+               normal_distance_weight: 0.1
+               eps_angle: 0.09
+          </rosparam>
+     </node>
+
+     <node pkg="nodelet" type="nodelet" name="extract_plane_indices" args="load pcl/ExtractIndices pcl_manager" output="screen">
+          <remap from="~input"   to="statistical_outlier_removal/output" />
+          <remap from="~indices" to="planar_segmentation/inliers" />
+          <rosparam>
+               negative: true
+          </rosparam>
+     </node>
+
+     <!-- <node name="extract_clusters" pkg="nodelet" type="nodelet" args="standalone pcl/EuclideanClusterExtraction">
+          <remap from="~input" to="/vboats/cloud/filtered" />
+          <rosparam>
+               cluster_tolerance: 0.03
+               spatial_locator: 1  # FLANN
+          </rosparam>
+     </node> -->
+
+     <node name="convex_hull" pkg="nodelet" type="nodelet" args="standalone pcl/ConvexHull2D">
+          <remap from="~input" to="extract_plane_indices/output" />
+          <rosparam>
+          </rosparam>
+     </node>
+
+</launch>
