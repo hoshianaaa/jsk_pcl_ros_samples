@@ -168,4 +168,12 @@ roslaunch jsk_pcl_ros_samples normal_direction_filter.launch
 
 - karage.pcd
 
+pcl_nodelet/clusteringの`tolerance`を変えると、結果が結構変わる  
+  
+tolerance: 0.1
+
+![Screenshot from 2022-08-11 20-38-54](https://user-images.githubusercontent.com/40942409/184125311-49030dfb-7309-47d6-b925-a1a704232059.png)
+
+tolerance: 0.04
+
 ![Screenshot from 2022-08-11 20-34-01](https://user-images.githubusercontent.com/40942409/184124735-36d1c31c-5d3d-40d0-bbec-a9036de5fb76.png)
