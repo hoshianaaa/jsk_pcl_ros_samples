@@ -163,5 +163,11 @@ roslaunch jsk_pcl_ros_samples normal_direction_filter.launch
 
 ## eucliean_segmentation(距離によるクラスタリング)
 
+- bunny.pcd
 ![Screenshot from 2022-08-11 20-20-33](https://user-images.githubusercontent.com/40942409/184122904-fcb78866-ee40-4033-9f6d-1c336361f411.png)
+
+-karage.pcd
+
+![Screenshot from 2022-08-11 20-34-01](https://user-images.githubusercontent.com/40942409/184124735-36d1c31c-5d3d-40d0-bbec-a9036de5fb76.png)
+
 
