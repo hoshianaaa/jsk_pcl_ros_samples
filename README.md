@@ -17,23 +17,6 @@ source ~/catkin_ws/devel/setup.bash
 ```
 # 試す
 
-## eucliean_segmentation(距離によるクラスタリング)
-
-- bunny.pcd
-![Screenshot from 2022-08-11 20-20-33](https://user-images.githubusercontent.com/40942409/184122904-fcb78866-ee40-4033-9f6d-1c336361f411.png)
-
-- karage.pcd
-
-pcl_nodelet/clusteringの`tolerance`を変えると、結果が結構変わる  
-  
-tolerance: 0.1
-
-![Screenshot from 2022-08-11 20-38-54](https://user-images.githubusercontent.com/40942409/184125311-49030dfb-7309-47d6-b925-a1a704232059.png)
-
-tolerance: 0.04
-
-![Screenshot from 2022-08-11 20-34-01](https://user-images.githubusercontent.com/40942409/184124735-36d1c31c-5d3d-40d0-bbec-a9036de5fb76.png)
-
 ## attention_clipper(領域の切り抜き)
 
 サンプルの起動
@@ -178,3 +161,20 @@ roslaunch jsk_pcl_ros_samples normal_direction_filter.launch
 ```
 
 ![Screenshot from 2021-05-10 02-53-59](https://user-images.githubusercontent.com/40942409/117582346-8c9a2b00-b13c-11eb-8189-2796d228484c.png)
+
+## eucliean_segmentation(距離によるクラスタリング)
+
+- bunny.pcd
+![Screenshot from 2022-08-11 20-20-33](https://user-images.githubusercontent.com/40942409/184122904-fcb78866-ee40-4033-9f6d-1c336361f411.png)
+
+- karage.pcd
+
+pcl_nodelet/clusteringの`tolerance`を変えると、結果が結構変わる  
+  
+tolerance: 0.1
+
+![Screenshot from 2022-08-11 20-38-54](https://user-images.githubusercontent.com/40942409/184125311-49030dfb-7309-47d6-b925-a1a704232059.png)
+
+tolerance: 0.04
+
+![Screenshot from 2022-08-11 20-34-01](https://user-images.githubusercontent.com/40942409/184124735-36d1c31c-5d3d-40d0-bbec-a9036de5fb76.png)
