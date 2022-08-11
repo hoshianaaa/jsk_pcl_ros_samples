@@ -1,5 +1,7 @@
 <launch>
-	<arg name="file_name" value="$(find jsk_pcl_ros_samples)/pcd/bunny.pcd"/>
+	<!--arg name="file_name" value="$(find jsk_pcl_ros_samples)/pcd/table_scene_lms400.pcd"/-->
+	<!--arg name="file_name" value="$(find jsk_pcl_ros_samples)/pcd/bunny.pcd"/-->
+	<arg name="file_name" value="$(find jsk_pcl_ros_samples)/pcd/karage.pcd"/>
 
 	<arg name="rate" value="0.1"/>
 	<node pkg="pcl_ros" type="pcd_to_pointcloud" name="pcd_to_pointcloud" args="$(arg file_name) $(arg rate)" output="screen">
@@ -13,6 +15,7 @@
     <node name="rviz"
           pkg="rviz" type="rviz"
           args="-d $(find jsk_pcl_ros_samples)/rviz/euclidean_segmentation.rviz"/>
+    <node name="rqt_reconfigure" pkg="rqt_reconfigure" type="rqt_reconfigure" />
   </group>
 
 
@@ -31,7 +34,7 @@
       <remap from="~input" to="$(arg input_point)" />
       <rosparam>
         filter_field_name: z
-        filter_limit_min: 0.0
+        filter_limit_min: -5.0
         filter_limit_max: 5.0
         leaf_size: 0.01
       </rosparam>
