@@ -16,6 +16,7 @@ source ~/catkin_ws/devel/setup.bash
 
 ```
 # 試す
+
 ## attention_clipper(領域の切り抜き)
 
 サンプルの起動
@@ -62,6 +63,12 @@ label: 0"
 ```
 
 ![attention_clipper3](https://user-images.githubusercontent.com/40942409/111523770-021df680-879f-11eb-91f4-72ab7dc0fe33.png)
+
+- BoundingBoxのコントロール
+
+slider barからコントロール可能です
+
+![Screenshot from 2022-08-20 05-02-25](https://user-images.githubusercontent.com/40942409/185698592-172b75b2-33da-45c7-ba0a-36ce0e254d27.png)
 
 サンプル2(複数のBoundingBox)の起動
 ```
