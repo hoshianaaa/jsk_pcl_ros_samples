@@ -45,7 +45,7 @@
           output="screen" clear_params="true">
       <remap from="~input" to="/pcl_nodelet/voxelgrid/output" />
       <rosparam>
-         tolerance: 0.1
+         tolerance: 0.03
       </rosparam>
     </node>
     <node pkg="nodelet" type="nodelet"
