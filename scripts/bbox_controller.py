@@ -58,7 +58,7 @@ class Application(tk.Frame):
         self.init_pos_read = False
         self.init_pos_msg = None
         if wait_init_pos:
-          rospy.Subscriber("/bbox_server_init_pos", BoundingBox, self.init_pos_callback)
+          rospy.Subscriber("/bbox_init_pos", BoundingBox, self.init_pos_callback)
           while alive():
             if self.init_pos_read:
               break
@@ -151,6 +151,9 @@ class Application(tk.Frame):
         self.pub.publish(msg)
 
         self.after(1, self.loop)
+
+        if rospy.is_shutdown():
+          app.master.destroy()
 
 
 root = tk.Tk()
