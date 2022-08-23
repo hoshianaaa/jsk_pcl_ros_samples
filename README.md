@@ -1,6 +1,7 @@
 # jsk_pcl_ros_samples
-jsk_pcl_rosパッケージのサンプル集  
-  
+
+jsk_pcl_ros package sample
+
 # インストール
 ```
 sudo apt-get install -y ros-melodic-jsk-pcl-ros
