@@ -67,7 +67,7 @@ label: 0"
 
 - BoundingBoxのコントロール
 
-slider barからコントロール可能です
+slider barからコントロール可
 
 ![Screenshot from 2022-08-20 05-02-25](https://user-images.githubusercontent.com/40942409/185698592-172b75b2-33da-45c7-ba0a-36ce0e254d27.png)
 
