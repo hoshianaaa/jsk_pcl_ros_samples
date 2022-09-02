@@ -39,7 +39,7 @@
 
   <node name="bbox_controller" pkg="jsk_pcl_ros_samples" type="bbox_controller.py"/>
 
-  <node name="bbox_init_server" pkg="jsk_pcl_ros_samples" type="bbox_init_server.py" args="$(find jsk_pcl_ros_samples)/scripts/init_pos.json"/>
+  <node name="bbox_init_server" pkg="jsk_pcl_ros_samples" type="bbox_init_server.py" args="$(find jsk_pcl_ros_samples)/scripts/bbox_init_server-init_pos.json"/>
   <!--node name="bbox_init_server" pkg="jsk_pcl_ros_samples" type="bbox_init_server.py"/-->
 
 </launch>
