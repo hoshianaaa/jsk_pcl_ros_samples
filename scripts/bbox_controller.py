@@ -36,20 +36,20 @@ class Application(tk.Frame):
     def __init__(self, master = None):
         super().__init__(master)
 
-        self.x = self.create_scale("x: ", -1, 1, 0.01)
-        self.y = self.create_scale("y: ", -1, 1, 0.01)
-        self.z = self.create_scale("z: ", -1, 1, 0.01)
+        self.x = self.create_scale("x: ", -1, 1, 0.001)
+        self.y = self.create_scale("y: ", -1, 1, 0.001)
+        self.z = self.create_scale("z: ", -1, 1, 0.001)
 
-        self.dx = self.create_scale("dim x: ", 0.01, 1, 0.01)
+        self.dx = self.create_scale("dim x: ", 0.01, 1, 0.001)
         self.dx.set(0.2)
-        self.dy = self.create_scale("dim y: ", 0.01, 1, 0.01)
+        self.dy = self.create_scale("dim y: ", 0.01, 1, 0.001)
         self.dy.set(0.2)
-        self.dz = self.create_scale("dim z: ", 0.01, 1, 0.01)
+        self.dz = self.create_scale("dim z: ", 0.01, 1, 0.001)
         self.dz.set(0.2)
 
-        self.ex = self.create_scale("euler x: ", - math.pi, math.pi, 0.01)
-        self.ey = self.create_scale("euler y: ", - math.pi, math.pi, 0.01)
-        self.ez = self.create_scale("euler z: ", - math.pi, math.pi, 0.01)
+        self.ex = self.create_scale("euler x: ", - math.pi, math.pi, 0.001)
+        self.ey = self.create_scale("euler y: ", - math.pi, math.pi, 0.001)
+        self.ez = self.create_scale("euler z: ", - math.pi, math.pi, 0.001)
         
 
         self.pub = rospy.Publisher("/attention_clipper/input/box", BoundingBox, queue_size=10)

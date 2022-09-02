@@ -71,7 +71,7 @@ def callback(msg):
   
   write_json_file(f_name, data)
 
-f_name = os.environ['HOME'] + "/.ros/init_pos.json"
+f_name = os.environ['HOME'] + "/.ros/bbox_init_server-init_pos.json"
 
 if len(sys.argv) > 1:
   f_name = sys.argv[1]
