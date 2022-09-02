@@ -86,10 +86,28 @@ if read_sucess == False:
 else:
   print(data)
 
+first_pub = False
+
 rospy.init_node("bbox_init_server")
 pub = rospy.Publisher("/bbox_init_pos", BoundingBox, queue_size=10)
+cripper_pub = rospy.Publisher("/attention_clipper/input/box", BoundingBox, queue_size=10)
 rospy.Subscriber("/attention_clipper/input/box", BoundingBox, callback)
-r = rospy.Rate(3)
+
+
+r = rospy.Rate(10)
+
+x = data["x"]
+y = data["y"]
+z = data["z"]
+qx = data["qx"]
+qy = data["qy"]
+qz = data["qz"]
+qw = data["qw"]
+dx = data["dx"]
+dy = data["dy"]
+dz = data["dz"]
+
+
 while alive():
  
   print(data)
@@ -106,6 +124,8 @@ while alive():
   dz = data["dz"]
 
   msg = BoundingBox()
+  msg.header.seq = 1
+  msg.header.frame_id = "base_link"
   msg.pose.position.x = x
   msg.pose.position.y = y
   msg.pose.position.z = z
@@ -118,5 +138,6 @@ while alive():
   msg.dimensions.z = dz
 
   pub.publish(msg)
+  cripper_pub.publish(msg)
 
   r.sleep()
