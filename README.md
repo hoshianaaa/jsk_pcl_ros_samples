@@ -1,6 +1,6 @@
 # jsk_pcl_ros_samples
 
-jsk_pcl_ros package sample
+jsk_pcl_ros package samples
 
 # インストール
 ```
