@@ -4,8 +4,8 @@ jsk_pcl_ros package samples
 
 # インストール
 ```
-sudo apt-get install -y ros-melodic-jsk-pcl-ros
-sudo apt-get install -y ros-melodic-jsk-visualization
+sudo apt-get install -y ros-noetic-jsk-pcl-ros
+sudo apt-get install -y ros-noetic-jsk-visualization
 git clone https://github.com/hoshianaaa/jsk_pcl_ros_samples.git
 cd ~/catkin_ws
 
