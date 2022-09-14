@@ -10,8 +10,6 @@ git clone https://github.com/hoshianaaa/jsk_pcl_ros_samples.git
 cd ~/catkin_ws
 
 catkin build 
-または
-catkin make
 
 source ~/catkin_ws/devel/setup.bash
 
